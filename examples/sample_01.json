@@ -132,12 +132,12 @@
     "hand_negative": "negative_hand, NegfeetV2, bad anatomy,blurry,(worst quality:1.8),low quality,hands bad,face bad,(normal quality:1.3),bad hands,[extra fingers],mutated hands and fingers,extra legs,extra arms,duplicate,cropped,text,jpeg,artifacts,signature,watermark,username,blurry,artist name,trademark,title,multiple view,Reference sheet,long body,multiple breasts,mutated,bad anatomy,disfigured,bad proportions,bad feet,ugly,text font ui,missing limb,monochrome,bad hands,worst quality, low quality, bad quality, multiple views, 4koma, comic, jpeg artifacts, monochrome, sepia, greyscale, flat color, pale color, muted color, low contrast, bad anatomy, picture frame, english text, logo, patreon username, web address,(worst quality, low quality:1.2), bad feet,score_4,score_3,score_2,score_1,too many fingers,Blurred eyes,, nsfw, suggestive, multiple girls, 2girls, 3girls, crowd, extra characters, duplicate, (white skirt:1.3), (dark bodysuit:1.3), (purple sailor uniform:1.3), (navy sailor collar:1.3), (purple dress:1.3), (black corset:1.3), (waist corset:1.3), (black belt:1.3), (belt:1.2), (wide belt:1.3), (tactical harness:1.3), (straps on her body:1.25), (black skirt:1.25), (straw hat:1.3), (hat:1.25), bodysuit, (strap:1.2), (tactical gear:1.2), (black mary janes:1.2), , fused fingers, too many fingers, missing fingers, extra digits, malformed hands, (toes:1.2), (feet instead of hands:1.2)"
   },
   "differs_from_workflow": {
-    "_": "示例图出自生产链，本仓工作流是它减去两个内部节点、并纠正了一处接线错误。三处差异如下。",
+    "_": "示例图出自生产链，本仓工作流是它减去两个内部节点、纠正了一处接线错误后的版本。差异共四处：两个被移除的内部节点、检测器接线、以及正向里没有画风串（见顶层 artist_string）。",
     "removed_nodes": [
       {
         "node": "900",
         "class_type": "LoraLoader",
-        "file": "Robertlu1021_rossi_(arknights)_v1.0_epoch_10.safetensors",
+        "file": "（第三方角色 LoRA，文件名略——本仓不分发）",
         "model": 0.8,
         "clip": 0.8,
         "why": "角色槽（命中角色时原位换名）。挂的是我们自有/第三方角色 LoRA，不对外分发。"

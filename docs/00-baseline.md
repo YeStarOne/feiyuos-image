@@ -36,7 +36,7 @@
 | 193 | `add_saturation_XL` **−1.0** | 降饱和；颜色发灰先怀疑它 |
 | 3 | KSampler **30 步 / cfg 5.0 / euler / karras** | 首轮 |
 | 64 | LatentUpscaleBy **1.1×** nearest-exact | 1024×1536 → 1128×1688 |
-| 17 | KSampler **20 步 / cfg 5.0 / denoise 0.55** | 二轮重绘（做爱/写真批用 0.4，见 §五） |
+| 17 | KSampler **20 步 / cfg 5.0 / denoise 0.55** | 二轮重绘（动作幅度大、要保住姿势的批用 0.4，见 §五） |
 | 176 | FaceDetailer 脸：20 步 / cfg 8.0 / dn **0.5** | 接 301/302 提词 |
 | 142 | FaceDetailer 手：20 步 / cfg 7.0 / dn **0.55** / cycle 1 | 同上 |
 
