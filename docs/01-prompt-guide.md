@@ -108,6 +108,7 @@ ComfyUI 保存的 PNG 里，`tEXt` 块存着**完整节点图**——包括整�
 | 顶上签名（`DI N WLOP` 这类花体字） | `artist:wlop` / `artist:dino` 的署名先验；无权重负向打不过 | 负向提权名称类（`(signature:1.5)` 起），再把 wlop 从 1.0 降到 0.7；仍压不住才摘 |
 | 手粘在奇怪位置、五指像脚 | 正向是否有 `five toes/separated toes/detailed feet` | 删三连，改 `barefoot/no footwear` + 一句构图 |
 | 手部负向改了没反应 | 两个细节器的检测器是否接反（手部提词挂在人脸检测器上） | 见 `docs/03-workflow.md` §二：脸检测器 ↔ 主提词，手检测器 ↔ 手部提词 |
+| 画面出现镣铐/手铐/脚镣这类束缚具 | 链上是否还挂着 R18 细节 LoRA（我们那次是 `realistic_cum_v1` @0.8）；负向只有泛词 | 把那条 LoRA 强度归零（节点别删，留着好回滚），再点名 `(shackles:1.35), (handcuffs:1.35), (leg irons:1.35), (ankle cuffs:1.35), (chains:1.3), (leash:1.3)`；**别写泛词 `collar`**，会把正向的蕾丝领一起打掉 |
 | 脚出画 | 是否只有 `barefoot` 没有构图约束 | 补 `both bare feet are visible in the frame` |
 | 脸不像角色 | 脸细节器 denoise 太高 | LoRA 角色把 `176.denoise` 降到 0.3 |
 | 换角色 LoRA 后脸还是上一个人 | 是否新接了一条 LoRA | 原位换名，别另起一条 |
