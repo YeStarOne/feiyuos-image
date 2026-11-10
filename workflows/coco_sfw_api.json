@@ -1,0 +1,393 @@
+{
+  "3": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "193",
+        0
+      ],
+      "seed": 871065,
+      "steps": 30,
+      "cfg": 5.0,
+      "sampler_name": "euler",
+      "scheduler": "karras",
+      "positive": [
+        "165",
+        0
+      ],
+      "negative": [
+        "153",
+        0
+      ],
+      "latent_image": [
+        "23",
+        0
+      ],
+      "denoise": 1.0
+    },
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "4": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "cocoIllustriousNoobai_v55.safetensors"
+    },
+    "_meta": {
+      "title": "CheckpointLoaderSimple"
+    }
+  },
+  "17": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "193",
+        0
+      ],
+      "seed": 871065,
+      "steps": 20,
+      "cfg": 5.0,
+      "sampler_name": "euler",
+      "scheduler": "karras",
+      "positive": [
+        "165",
+        0
+      ],
+      "negative": [
+        "153",
+        0
+      ],
+      "latent_image": [
+        "64",
+        0
+      ],
+      "denoise": 0.55
+    },
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "23": {
+    "class_type": "EmptyLatentImage",
+    "inputs": {
+      "width": 1024,
+      "height": 1536,
+      "batch_size": 1
+    },
+    "_meta": {
+      "title": "EmptyLatentImage"
+    }
+  },
+  "64": {
+    "class_type": "LatentUpscaleBy",
+    "inputs": {
+      "samples": [
+        "3",
+        0
+      ],
+      "upscale_method": "nearest-exact",
+      "scale_by": 1.1
+    },
+    "_meta": {
+      "title": "LatentUpscaleBy"
+    }
+  },
+  "77": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "142",
+        0
+      ],
+      "filename_prefix": "feiyuos_image/example"
+    },
+    "_meta": {
+      "title": "SaveImage"
+    }
+  },
+  "118": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "17",
+        0
+      ],
+      "vae": [
+        "4",
+        2
+      ]
+    },
+    "_meta": {
+      "title": "VAEDecode"
+    }
+  },
+  "142": {
+    "class_type": "FaceDetailer",
+    "inputs": {
+      "image": [
+        "176",
+        0
+      ],
+      "model": [
+        "193",
+        0
+      ],
+      "clip": [
+        "193",
+        1
+      ],
+      "vae": [
+        "4",
+        2
+      ],
+      "guide_size": 512.0,
+      "guide_size_for": true,
+      "max_size": 1024.0,
+      "seed": 871065,
+      "steps": 20,
+      "cfg": 7.0,
+      "sampler_name": "euler_ancestral",
+      "scheduler": "karras",
+      "positive": [
+        "301",
+        0
+      ],
+      "negative": [
+        "302",
+        0
+      ],
+      "denoise": 0.55,
+      "feather": 5,
+      "noise_mask": true,
+      "force_inpaint": true,
+      "bbox_threshold": 0.5,
+      "bbox_dilation": 10,
+      "bbox_crop_factor": 3.0,
+      "sam_detection_hint": "center-1",
+      "sam_dilation": 0,
+      "sam_threshold": 0.93,
+      "sam_bbox_expansion": 0,
+      "sam_mask_hint_threshold": 0.7,
+      "sam_mask_hint_use_negative": "False",
+      "drop_size": 10,
+      "bbox_detector": [
+        "177",
+        0
+      ],
+      "wildcard": "",
+      "cycle": 1,
+      "inpaint_model": false,
+      "noise_mask_feather": 20,
+      "tiled_encode": false,
+      "tiled_decode": false
+    },
+    "_meta": {
+      "title": "FaceDetailer"
+    }
+  },
+  "143": {
+    "class_type": "UltralyticsDetectorProvider",
+    "inputs": {
+      "model_name": "bbox/face_yolov8m.pt"
+    },
+    "_meta": {
+      "title": "UltralyticsDetectorProvider"
+    }
+  },
+  "153": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "negative_hand, NegfeetV2, bad anatomy,blurry,(worst quality:1.8),low quality,hands bad,face bad,(normal quality:1.3),bad hands,[extra fingers],mutated hands and fingers,extra legs,extra arms,duplicate,cropped,text,jpeg,artifacts,signature,watermark,username,blurry,artist name,trademark,title,multiple view,Reference sheet,long body,multiple breasts,mutated,bad anatomy,disfigured,bad proportions,bad feet,ugly,text font ui,missing limb,monochrome,bad hands,worst quality, low quality, bad quality, multiple views, 4koma, comic, jpeg artifacts, monochrome, sepia, greyscale, flat color, pale color, muted color, low contrast, bad anatomy, picture frame, english text, logo, patreon username, web address,(worst quality, low quality:1.2), bad feet,score_4,score_3,score_2,score_1,too many fingers,Blurred eyes,, nsfw, suggestive, multiple girls, 2girls, 3girls, crowd, extra characters, duplicate, (white skirt:1.3), (dark bodysuit:1.3), (purple sailor uniform:1.3), (navy sailor collar:1.3), (purple dress:1.3), (black corset:1.3), (waist corset:1.3), (black belt:1.3), (belt:1.2), (wide belt:1.3), (tactical harness:1.3), (straps on her body:1.25), (black skirt:1.25), (straw hat:1.3), (hat:1.25), bodysuit, (strap:1.2), (tactical gear:1.2), (black mary janes:1.2), ",
+      "clip": [
+        "193",
+        1
+      ]
+    },
+    "_meta": {
+      "title": "CLIPTextEncode"
+    }
+  },
+  "165": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "(solo:1.25), 1girl, suzuran_\\(arknights\\), arknights \\(game\\), blonde hair, very long hair, green eyes, fox ears, fox girl, fox tail, animal ear fluff, blue frilled headband, white flower hair ornament, (lace choker:1.15), (large silver bell on her choker:1.3), (light blue pajamas:1.25), (pj shirt with a white lace collar:1.2), (pj shorts:1.2), long sleeves, white ankle socks, sitting on the bed, one hand on the lamp, looking back at the viewer one last time, bedroom, bed, lamp light, night, soft warm glow",
+      "clip": [
+        "193",
+        1
+      ]
+    },
+    "_meta": {
+      "title": "CLIPTextEncode"
+    }
+  },
+  "175": {
+    "class_type": "LoraLoader",
+    "inputs": {
+      "model": [
+        "4",
+        0
+      ],
+      "clip": [
+        "4",
+        1
+      ],
+      "lora_name": "Expressive_H-000001.safetensors",
+      "strength_model": 1.0,
+      "strength_clip": 1.0
+    },
+    "_meta": {
+      "title": "LoraLoader"
+    }
+  },
+  "176": {
+    "class_type": "FaceDetailer",
+    "inputs": {
+      "image": [
+        "118",
+        0
+      ],
+      "model": [
+        "193",
+        0
+      ],
+      "clip": [
+        "193",
+        1
+      ],
+      "vae": [
+        "4",
+        2
+      ],
+      "guide_size": 512.0,
+      "guide_size_for": true,
+      "max_size": 1024.0,
+      "seed": 871065,
+      "steps": 20,
+      "cfg": 8.0,
+      "sampler_name": "euler_ancestral",
+      "scheduler": "karras",
+      "positive": [
+        "165",
+        0
+      ],
+      "negative": [
+        "153",
+        0
+      ],
+      "denoise": 0.5,
+      "feather": 5,
+      "noise_mask": true,
+      "force_inpaint": true,
+      "bbox_threshold": 0.5,
+      "bbox_dilation": 10,
+      "bbox_crop_factor": 3.0,
+      "sam_detection_hint": "center-1",
+      "sam_dilation": 0,
+      "sam_threshold": 0.93,
+      "sam_bbox_expansion": 0,
+      "sam_mask_hint_threshold": 0.7,
+      "sam_mask_hint_use_negative": "False",
+      "drop_size": 10,
+      "bbox_detector": [
+        "143",
+        0
+      ],
+      "wildcard": "",
+      "cycle": 1,
+      "inpaint_model": false,
+      "noise_mask_feather": 20,
+      "tiled_encode": false,
+      "tiled_decode": false
+    },
+    "_meta": {
+      "title": "FaceDetailer"
+    }
+  },
+  "177": {
+    "class_type": "UltralyticsDetectorProvider",
+    "inputs": {
+      "model_name": "bbox/hand_yolov8s.pt"
+    },
+    "_meta": {
+      "title": "UltralyticsDetectorProvider"
+    }
+  },
+  "188": {
+    "class_type": "LoraLoader",
+    "inputs": {
+      "model": [
+        "175",
+        0
+      ],
+      "clip": [
+        "175",
+        1
+      ],
+      "lora_name": "add_contrast_XL.safetensors",
+      "strength_model": -2.0,
+      "strength_clip": 1.0
+    },
+    "_meta": {
+      "title": "LoraLoader"
+    }
+  },
+  "189": {
+    "class_type": "LoraLoader",
+    "inputs": {
+      "model": [
+        "188",
+        0
+      ],
+      "clip": [
+        "188",
+        1
+      ],
+      "lora_name": "add_brightness_XL.safetensors",
+      "strength_model": 1.0,
+      "strength_clip": 1.0
+    },
+    "_meta": {
+      "title": "LoraLoader"
+    }
+  },
+  "193": {
+    "class_type": "LoraLoader",
+    "inputs": {
+      "model": [
+        "189",
+        0
+      ],
+      "clip": [
+        "189",
+        1
+      ],
+      "lora_name": "add_saturation_XL.safetensors",
+      "strength_model": -1.0,
+      "strength_clip": 1.0
+    },
+    "_meta": {
+      "title": "LoraLoader"
+    }
+  },
+  "301": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "(solo:1.25), 1girl, suzuran_\\(arknights\\), arknights \\(game\\), blonde hair, very long hair, green eyes, fox ears, fox girl, fox tail, animal ear fluff, blue frilled headband, white flower hair ornament, (lace choker:1.15), (large silver bell on her choker:1.3), (light blue pajamas:1.25), (pj shirt with a white lace collar:1.2), (pj shorts:1.2), long sleeves, white ankle socks, sitting on the bed, one hand on the lamp, looking back at the viewer one last time, bedroom, bed, lamp light, night, soft warm glow, perfect hands, detailed fingers, five fingers on each hand, natural hand shape",
+      "clip": [
+        "193",
+        1
+      ]
+    }
+  },
+  "302": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "negative_hand, NegfeetV2, bad anatomy,blurry,(worst quality:1.8),low quality,hands bad,face bad,(normal quality:1.3),bad hands,[extra fingers],mutated hands and fingers,extra legs,extra arms,duplicate,cropped,text,jpeg,artifacts,signature,watermark,username,blurry,artist name,trademark,title,multiple view,Reference sheet,long body,multiple breasts,mutated,bad anatomy,disfigured,bad proportions,bad feet,ugly,text font ui,missing limb,monochrome,bad hands,worst quality, low quality, bad quality, multiple views, 4koma, comic, jpeg artifacts, monochrome, sepia, greyscale, flat color, pale color, muted color, low contrast, bad anatomy, picture frame, english text, logo, patreon username, web address,(worst quality, low quality:1.2), bad feet,score_4,score_3,score_2,score_1,too many fingers,Blurred eyes,, nsfw, suggestive, multiple girls, 2girls, 3girls, crowd, extra characters, duplicate, (white skirt:1.3), (dark bodysuit:1.3), (purple sailor uniform:1.3), (navy sailor collar:1.3), (purple dress:1.3), (black corset:1.3), (waist corset:1.3), (black belt:1.3), (belt:1.2), (wide belt:1.3), (tactical harness:1.3), (straps on her body:1.25), (black skirt:1.25), (straw hat:1.3), (hat:1.25), bodysuit, (strap:1.2), (tactical gear:1.2), (black mary janes:1.2), , fused fingers, too many fingers, missing fingers, extra digits, malformed hands, (toes:1.2), (feet instead of hands:1.2)",
+      "clip": [
+        "193",
+        1
+      ]
+    }
+  }
+}

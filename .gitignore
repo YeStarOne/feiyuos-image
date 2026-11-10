@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# ComfyUI 产物（本仓只放配方，不放出图）
+output/
+ComfyUI/
+**/raw/
+
+# 本地草稿
+*.log
+*.tmp
+*.bak*
+_probe*.py
+_dryrun*.py
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini

@@ -1,0 +1,177 @@
+{
+  "_readme": "这张图的完整参数。字段与 ComfyUI /prompt 的节点号一一对应，可直接改 workflows/coco_sfw_api.json 复现同一套画风。",
+  "file": "examples/sample_01.png",
+  "sha256": "ba848795b76e81b0a04766f5067403ff323dfe3d12a03426d47b4dde5557e3cc",
+  "bytes": 3568746,
+  "pixel_size": [
+    1128,
+    1688
+  ],
+  "metadata_keywords_after_wash": [],
+  "seed": 871065,
+  "provenance": {
+    "date": "2026-11-09",
+    "batch": "铃兰_美图66_1109（第 66 张，seed 871065，00001 号）",
+    "produced_by": "本项目的生产链（feiyuos-pc-body/server/feiyu_image_mcp.py 的模板 + 手工 A/B 臂）",
+    "note": "生产链比 workflows/coco_sfw_api.json 多两个不外发的节点，所以同 seed 重跑得到同风格的另一张，不是逐像素同一张。差异见 differs_from_workflow。"
+  },
+  "checkpoint": {
+    "node": "4",
+    "file": "cocoIllustriousNoobai_v55.safetensors"
+  },
+  "loras": [
+    {
+      "order": 1,
+      "node": "175",
+      "file": "Expressive_H-000001.safetensors",
+      "model": 1.0,
+      "clip": 1.0
+    },
+    {
+      "order": 2,
+      "node": "188",
+      "file": "add_contrast_XL.safetensors",
+      "model": -2.0,
+      "clip": 1.0
+    },
+    {
+      "order": 3,
+      "node": "189",
+      "file": "add_brightness_XL.safetensors",
+      "model": 1.0,
+      "clip": 1.0
+    },
+    {
+      "order": 4,
+      "node": "193",
+      "file": "add_saturation_XL.safetensors",
+      "model": -1.0,
+      "clip": 1.0
+    }
+  ],
+  "empty_latent": {
+    "node": "23",
+    "width": 1024,
+    "height": 1536,
+    "batch_size": 1
+  },
+  "samplers": [
+    {
+      "pass": 1,
+      "node": "3",
+      "seed": 871065,
+      "steps": 30,
+      "cfg": 5.0,
+      "sampler_name": "euler",
+      "scheduler": "karras",
+      "denoise": 1.0
+    },
+    {
+      "pass": 2,
+      "node": "17",
+      "seed": 871065,
+      "steps": 20,
+      "cfg": 5.0,
+      "sampler_name": "euler",
+      "scheduler": "karras",
+      "denoise": 0.55,
+      "after": {
+        "node": "64",
+        "class_type": "LatentUpscaleBy",
+        "upscale_method": "nearest-exact",
+        "scale_by": 1.1
+      }
+    }
+  ],
+  "detailers": [
+    {
+      "order": 1,
+      "node": "176",
+      "input_image_from": "118 (VAEDecode)",
+      "bbox_detector": "node 177 = bbox/hand_yolov8s.pt",
+      "prompts": "主正向/负向（165/153）",
+      "steps": 20,
+      "cfg": 8.0,
+      "denoise": 0.5,
+      "cycle": 1,
+      "sampler_name": "euler_ancestral",
+      "scheduler": "karras",
+      "guide_size": 512.0,
+      "max_size": 1024.0,
+      "feather": 5,
+      "bbox_threshold": 0.5,
+      "bbox_dilation": 10,
+      "bbox_crop_factor": 3.0
+    },
+    {
+      "order": 2,
+      "node": "142",
+      "input_image_from": "176 (第一个细节器的输出)",
+      "bbox_detector": "node 143 = bbox/face_yolov8m.pt",
+      "prompts": "手部专用正/负（301/302）",
+      "steps": 20,
+      "cfg": 7.0,
+      "denoise": 0.55,
+      "cycle": 1,
+      "sampler_name": "euler_ancestral",
+      "scheduler": "karras",
+      "guide_size": 512.0,
+      "max_size": 1024.0,
+      "feather": 5,
+      "bbox_threshold": 0.5,
+      "bbox_dilation": 10,
+      "bbox_crop_factor": 3.0
+    }
+  ],
+  "prompts": {
+    "positive": "(solo:1.25), 1girl, suzuran_\\(arknights\\), arknights \\(game\\), blonde hair, very long hair, green eyes, fox ears, fox girl, fox tail, animal ear fluff, blue frilled headband, white flower hair ornament, (lace choker:1.15), (large silver bell on her choker:1.3), (light blue pajamas:1.25), (pj shirt with a white lace collar:1.2), (pj shorts:1.2), long sleeves, white ankle socks, sitting on the bed, one hand on the lamp, looking back at the viewer one last time, bedroom, bed, lamp light, night, soft warm glow",
+    "positive_len": 511,
+    "negative": "negative_hand, NegfeetV2, bad anatomy,blurry,(worst quality:1.8),low quality,hands bad,face bad,(normal quality:1.3),bad hands,[extra fingers],mutated hands and fingers,extra legs,extra arms,duplicate,cropped,text,jpeg,artifacts,signature,watermark,username,blurry,artist name,trademark,title,multiple view,Reference sheet,long body,multiple breasts,mutated,bad anatomy,disfigured,bad proportions,bad feet,ugly,text font ui,missing limb,monochrome,bad hands,worst quality, low quality, bad quality, multiple views, 4koma, comic, jpeg artifacts, monochrome, sepia, greyscale, flat color, pale color, muted color, low contrast, bad anatomy, picture frame, english text, logo, patreon username, web address,(worst quality, low quality:1.2), bad feet,score_4,score_3,score_2,score_1,too many fingers,Blurred eyes,, nsfw, suggestive, multiple girls, 2girls, 3girls, crowd, extra characters, duplicate, (white skirt:1.3), (dark bodysuit:1.3), (purple sailor uniform:1.3), (navy sailor collar:1.3), (purple dress:1.3), (black corset:1.3), (waist corset:1.3), (black belt:1.3), (belt:1.2), (wide belt:1.3), (tactical harness:1.3), (straps on her body:1.25), (black skirt:1.25), (straw hat:1.3), (hat:1.25), bodysuit, (strap:1.2), (tactical gear:1.2), (black mary janes:1.2), ",
+    "negative_len": 1267,
+    "hand_positive": "(solo:1.25), 1girl, suzuran_\\(arknights\\), arknights \\(game\\), blonde hair, very long hair, green eyes, fox ears, fox girl, fox tail, animal ear fluff, blue frilled headband, white flower hair ornament, (lace choker:1.15), (large silver bell on her choker:1.3), (light blue pajamas:1.25), (pj shirt with a white lace collar:1.2), (pj shorts:1.2), long sleeves, white ankle socks, sitting on the bed, one hand on the lamp, looking back at the viewer one last time, bedroom, bed, lamp light, night, soft warm glow, perfect hands, detailed fingers, five fingers on each hand, natural hand shape",
+    "hand_negative": "negative_hand, NegfeetV2, bad anatomy,blurry,(worst quality:1.8),low quality,hands bad,face bad,(normal quality:1.3),bad hands,[extra fingers],mutated hands and fingers,extra legs,extra arms,duplicate,cropped,text,jpeg,artifacts,signature,watermark,username,blurry,artist name,trademark,title,multiple view,Reference sheet,long body,multiple breasts,mutated,bad anatomy,disfigured,bad proportions,bad feet,ugly,text font ui,missing limb,monochrome,bad hands,worst quality, low quality, bad quality, multiple views, 4koma, comic, jpeg artifacts, monochrome, sepia, greyscale, flat color, pale color, muted color, low contrast, bad anatomy, picture frame, english text, logo, patreon username, web address,(worst quality, low quality:1.2), bad feet,score_4,score_3,score_2,score_1,too many fingers,Blurred eyes,, nsfw, suggestive, multiple girls, 2girls, 3girls, crowd, extra characters, duplicate, (white skirt:1.3), (dark bodysuit:1.3), (purple sailor uniform:1.3), (navy sailor collar:1.3), (purple dress:1.3), (black corset:1.3), (waist corset:1.3), (black belt:1.3), (belt:1.2), (wide belt:1.3), (tactical harness:1.3), (straps on her body:1.25), (black skirt:1.25), (straw hat:1.3), (hat:1.25), bodysuit, (strap:1.2), (tactical gear:1.2), (black mary janes:1.2), , fused fingers, too many fingers, missing fingers, extra digits, malformed hands, (toes:1.2), (feet instead of hands:1.2)"
+  },
+  "differs_from_workflow": {
+    "_": "示例图出自生产链，本仓工作流是它减去两个内部节点、并纠正了一处接线错误。三处差异如下。",
+    "removed_nodes": [
+      {
+        "node": "900",
+        "class_type": "LoraLoader",
+        "file": "Robertlu1021_rossi_(arknights)_v1.0_epoch_10.safetensors",
+        "model": 0.8,
+        "clip": 0.8,
+        "why": "角色槽（命中角色时原位换名）。挂的是我们自有/第三方角色 LoRA，不对外分发。"
+      },
+      {
+        "node": "192",
+        "class_type": "LoraLoader",
+        "file": "realistic_cum_v1.safetensors",
+        "model": 0.8,
+        "clip": 1.0,
+        "why": "与成人向内容强相关，本仓只做非 R18，故移除并把它后面的链接到 193。"
+      }
+    ],
+    "wiring_fix": {
+      "what": "生产模板把两个细节器的检测器接反了：先跑的那个（dn 0.5）用着手部检测器，后跑的那个（拿手部专用提词）用着人脸检测器。",
+      "sample_had": {
+        "176": "bbox/hand_yolov8s.pt (177)",
+        "142": "bbox/face_yolov8m.pt (143)"
+      },
+      "workflow_has": {
+        "176": "bbox/face_yolov8m.pt (143)",
+        "142": "bbox/hand_yolov8s.pt (177)"
+      },
+      "effect": "接反时，手部专用负向（fused fingers / toes / feet instead of hands）实际落在脸的裁片上，手并没有拿到它——这也是手上配饰、指型问题压不住的一个原因。",
+      "why_sample_kept": "示例图确实是接反那版出的，这里如实记录，不拿新版本冒充老图。"
+    }
+  },
+  "rerun": "把 prompts 写进 workflows/coco_sfw_api.json 的 165/153/301/302，四个 seed 都设 871065，POST /prompt；得到的是同风格的另一张。",
+  "artist_string": {
+    "_": "示例图的这条正向里没有画风串（12 个 artist tag）。这是事实，不是省略。",
+    "in_this_sample": "无（1110 正式批 66 张都不带；生成脚本头部写着'不动'，但 build() 实际没拼 ART）",
+    "in_production_module": "有（feiyu_image_mcp.compose() = HEAD + ART + 角色锚 + 服装 + subject，ART 约 266 字，750 字闸下内容段约 484 字）",
+    "in_this_repo_workflow": "无（与示例图一致，所以跑出来与示例图同一套画风）",
+    "how_to_add": "把 docs/00-baseline.md §一 的 12 个 artist tag 接在 HEAD 之后；带它时把 artist:wlop 降到 0.7 并保留署名负向（docs/01-prompt-guide.md §八）",
+    "evidence": "带 ART 的 1108 探针四臂 std 47.4~54.9；不带 ART 的 1110 批 std 同档且用户认可示例图；未做同 seed 带/不带对照，故不判优劣"
+  }
+}
